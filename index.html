@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboards - Chart.js</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Importa a biblioteca chart.js -->
+</head>
+
+<body>
+
+    <h1>Gráficos em Chart.js</h1> <br> <br>
+    
+
+    <div class="graficos" style="display: flex; flex-direction: row;">
+        <div style="width: 50%;">
+            <canvas id="Dashboard1"></canvas> <!-- Aqui será onde ficará e iremos mexer no 1° Gráfico -->
+        </div>
+
+        <div style="width: 50%;">
+            <canvas id="Dashboard2"></canvas> <!-- Aqui será onde ficará e iremos mexer no 1° Gráfico -->
+        </div>
+    </div>
+
+</body>
+
+</html>
+
+<script>
+    const ctx = document.getElementById('Dashboard1'); // Define a constante ctx como id do 1° Canvas acima
+    const ctz = document.getElementById('Dashboard2'); // Define a constante ctz como id do 2° Canvas acima
+
+    new Chart(ctx, { // Aqui se cria uma nova configuração canva, onde ctx é o id do canva que vamos modificar
+        type: 'line', // Tipo do gráfico
+        data: { // Informação dos dados/datas
+            labels: ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00'], // Informações/Colunas na parte debaixo do gráfico
+            datasets: [ // DataSets serão as linhas que irão aparecer
+                { // Aqui começa primeira linha
+                    label: 'Temperatura', // Título da mesma (que vai aparecer na legenda)
+                    data: [30, 29, 28, 25, 22, 23], // Dados dessa linha
+                    borderWidth: 3, // Tamanho da borda
+                    borderColor: '#FF6384', // Cor da Linha
+                    backgroundColor: '#FF6384' // Cor da Legenda/meio da legenda
+                },
+                {
+                    label: 'Umidade', // Título da linha
+                    data: [80, 82, 80, 85, 80, 83], // Dados da linha
+                    borderWidth: 3, // Tamanho da linha
+                    borderColor: '#36A2EB', // Cor da Linha
+                    backgroundColor: '#36A2EB' // Cor da Legenda/meio da legenda
+                }
+            ]
+        },
+        options: { // Opções/Configurações do gráfico (parte mais técnica, menos colorir e etc)
+            scales: { // Definir a escala (por exemplo, onde ele começa)
+                y: { // Mexer na linha y, vulgo Linha vertical
+                    beginAtZero: false // Habilita/Desabilita se o gráfico vai até o 0 (Linha vertical)
+                }
+            }
+        }
+    });
+
+    // ___________________________________
+    // Aqui começa a edição do 2° Gráfico
+
+    new Chart(ctz, { // ctz será o id do 2° gráfico cujo iremos modificar
+        type: 'bar', // Tipo do gráfico
+        data: { // Informações dos dados/datas
+            labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho'], // Informações/Colunas na parte debaixo do gráfico
+            datasets: [ // DataSets serão as linhas que irão aparecer
+                { // Aqui começa primeira linha
+                    label: 'Temperatura Média', // Título da mesma (que vai aparecer na legenda)
+                    data: [22, 24, 27, 23, 20, 18], // Dados dessa linha
+                    borderColor: '#FF6384', // Cor da Linha
+                    backgroundColor: '#FF6384' // Cor da Legenda/meio da legenda
+                },
+                {
+                    label: 'Umidade Média', // Título da linha
+                    data: [90, 89, 93, 87, 88, 82], // Dados da linha
+                    borderColor: '#36A2EB', // Cor da Linha
+                    backgroundColor: '#36A2EB' // Cor da Legenda/meio da legenda
+                }
+            ]
+        },
+        options: { // Opções/Configurações do gráfico (parte mais técnica, menos colorir e etc)
+            scales: { // Definir a escala (por exemplo, onde ele começa)
+                y: { // Mexer na linha y, vulgo Linha vertical
+                    beginAtZero: false // Habilita/Desabilita se o gráfico vai até o 0 (Linha vertical)
+                }
+            }
+        }
+    });
+</script>
